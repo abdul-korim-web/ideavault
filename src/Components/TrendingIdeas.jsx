@@ -102,7 +102,7 @@ export default function TrendingIdeas() {
 ];
 
   return (
-   <section className="bg-[#0b1120] px-4 py-16 md:px-8 text-white">
+   <section className="bg-[#0b1120] px-4 py-16 md:px-8 text-white ">
       <div className="mx-auto max-w-7xl">
 
         <div className="mb-10">
