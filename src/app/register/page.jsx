@@ -93,8 +93,13 @@ redirect(`/`)
         </div>
 
        <button
+       onClick={async()=>{
+const data = await authClient.signIn.social({
+    provider: "google",
+  });
+       }}
                  
-                 className="flex w-full items-center justify-center gap-3 rounded-xl border border-gray-300 dark:border-white/10 bg-white dark:bg-[#0b1120] py-3 text-sm font-semibold text-black dark:text-white hover:bg-gray-100 dark:hover:bg-white/10 transition"
+                 className="cursor-pointer flex w-full items-center justify-center gap-3 rounded-xl border border-gray-300 dark:border-white/10 bg-white dark:bg-[#0b1120] py-3 text-sm font-semibold text-black dark:text-white hover:bg-gray-100 dark:hover:bg-white/10 transition"
                >
                 <FcGoogle className="text-2xl"  />
                  Continue with Google
