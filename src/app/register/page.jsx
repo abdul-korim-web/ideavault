@@ -1,9 +1,27 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
+import { Button } from "@heroui/react";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { FcGoogle } from "react-icons/fc";
+import { toast } from "react-toastify";
 
 export default function RegisterPage() {
+  const handleRegistration =async (e)=>{
+    e.preventDefault()
+   const userFormData = new FormData(e.currentTarget);
+  const userData = Object.fromEntries(userFormData.entries());
+  const { data, error } = await authClient.signUp.email(userData);
+ if (error) {
+  toast.error( "Signup failed");
+  return;
+}
+
+toast.success("User created successfully:");
+redirect(`/`)
+    
+  }
   
   return (
     <section className="min-h-screen bg-white dark:bg-[#0b1120] flex items-center justify-center px-4">
@@ -17,11 +35,13 @@ export default function RegisterPage() {
           Create your IdeaVault account
         </p>
 
-        <form className="mt-8 space-y-5">
+        <form onSubmit={handleRegistration} className="mt-8 space-y-5">
 
           <div>
             <label className="text-sm text-black dark:text-white">Name</label>
             <input
+            name="name"
+            placeholder="Enter Your Name"
               type="text"
               className="mt-2 w-full rounded-xl border border-gray-300 dark:border-white/10 bg-white dark:bg-[#0b1120] px-4 py-3 text-black dark:text-white outline-none focus:border-violet-500"
             />
@@ -30,6 +50,8 @@ export default function RegisterPage() {
           <div>
             <label className="text-sm text-black dark:text-white">Email</label>
             <input
+            name="email"
+            placeholder="Enter Your Email"
               type="email"
               className="mt-2 w-full rounded-xl border border-gray-300 dark:border-white/10 bg-white dark:bg-[#0b1120] px-4 py-3 text-black dark:text-white outline-none focus:border-violet-500"
             />
@@ -38,6 +60,8 @@ export default function RegisterPage() {
           <div>
             <label className="text-sm text-black dark:text-white">Photo URL</label>
             <input
+            name="image"
+            placeholder="Enter Your Image Link"
               type="text"
               className="mt-2 w-full rounded-xl border border-gray-300 dark:border-white/10 bg-white dark:bg-[#0b1120] px-4 py-3 text-black dark:text-white outline-none focus:border-violet-500"
             />
@@ -46,17 +70,19 @@ export default function RegisterPage() {
           <div>
             <label className="text-sm text-black dark:text-white">Password</label>
             <input
+            name="password"
+            placeholder="Enter Your Password"
               type="password"
               className="mt-2 w-full rounded-xl border border-gray-300 dark:border-white/10 bg-white dark:bg-[#0b1120] px-4 py-3 text-black dark:text-white outline-none focus:border-violet-500"
             />
           </div>
 
-          <button
+          <Button
             type="submit"
-            className="w-full rounded-xl bg-violet-600 py-3 text-white font-semibold hover:bg-violet-500 transition"
+            className="w-full rounded-xl bg-violet-600 py-4 text-white font-semibold hover:bg-violet-500 transition"
           >
             Create Account
-          </button>
+          </Button>
 
         </form>
 
