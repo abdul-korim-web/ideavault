@@ -25,7 +25,7 @@ export default async function TrendingIdeas() {
           </p>
         </div>
 
-        {ideas.length === 0 ? (
+        {!ideas || ideas.length === 0  ? (
           <div className="flex flex-col items-center justify-center rounded-2xl border border-white/10 bg-white/5 py-20 text-center">
             <h3 className="text-xl font-bold">No Ideas Found 😕</h3>
             <p className="mt-2 text-sm text-white/60">

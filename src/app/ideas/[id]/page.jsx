@@ -1,5 +1,7 @@
 
+import CommentFrom from "@/Components/client/CommentFrom";
 import { auth } from "@/lib/auth";
+import { authClient } from "@/lib/auth-client";
 import { Button } from "@heroui/react";
 import { headers } from "next/headers";
 import Image from "next/image";
@@ -13,12 +15,56 @@ const fetchSingleIdeas = async(id,token)=>{
   const data = await res.json()
   return data?.data
 }
+const getComment = async (productId, token) => {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_SERVER_URL}/comment/productcomment/${productId}`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        cache: "no-store",
+      }
+    );
+
+    const data = await res.json();
+
+    return data;
+
+  } catch (error) {
+    console.log(error);
+
+    return {
+      success: false,
+      message: "Failed to fetch comments",
+    };
+  }
+};
+const getMe = async (token) => {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_SERVER_URL}/auth/me`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      cache: "no-store",
+    }
+  );
+
+  const data = await res.json();
+  return data?.user;
+};
 export default async function IdeaDetailsPage({params}) {
   const {token} = await auth.api.getToken({
     headers:await headers()
   })
   const {id} = await params
   const idea =  await fetchSingleIdeas(id,token)
+  const commentsFun=await getComment(id,token)
+  const comments =commentsFun?.data
+  const user  =await getMe(token)
+ 
 if (!idea) {
   return (
     <div className="flex min-h-screen items-center justify-center bg-white dark:bg-[#0b1120]">
@@ -33,25 +79,6 @@ if (!idea) {
     </div>
   );
 }
-  const comments = [
-  {
-    _id: "1",
-    userName: "John Doe",
-    userImage:
-      "https://i.pravatar.cc/150?img=12",
-    text: "This is a really useful startup idea. I would definitely use it.",
-    time: "2 hours ago",
-  },
-
-  {
-    _id: "2",
-    userName: "Sarah Ahmed",
-    userImage:
-      "https://i.pravatar.cc/150?img=32",
-    text: "You can also add LinkedIn optimization features.",
-    time: "5 hours ago",
-  },
-];
 
   return (
     <section className="min-h-screen bg-white dark:bg-[#0b1120] px-4 py-10 md:px-8">
@@ -146,73 +173,77 @@ if (!idea) {
             Comments 💬
           </h2>
 
-          <form className="mt-6">
-            <textarea
-              rows={4}
-              placeholder="Write your comment..."
-              className="w-full rounded-2xl border border-gray-300 dark:border-white/10 bg-white dark:bg-[#0b1120] px-4 py-4 text-black dark:text-white outline-none focus:border-violet-500"
-            ></textarea>
-
-            <Button
-              type="submit"
-              className="mt-4 rounded-xl bg-violet-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-violet-500"
-            >
-              Add Comment
-            </Button>
-          </form>
+          <CommentFrom productId={idea._id}/>
 
          <div className="mt-8 space-y-5">
 
-  {comments.map((comment) => (
-    <div
-      key={comment._id}
-      className="rounded-2xl border border-gray-200 dark:border-white/10 bg-gray-100 dark:bg-[#0b1120] p-5"
-    >
+  {!comments || comments.length === 0 ? (
+    <div className="rounded-3xl border border-dashed border-gray-300 dark:border-white/10 bg-gray-100 dark:bg-[#0b1120] py-14 text-center">
 
-      <div className="flex items-start justify-between gap-4">
+      <h2 className="text-xl font-bold text-black dark:text-white">
+        No Comments Yet 💬
+      </h2>
 
-        <div className="flex items-start gap-4">
-
-          <Image
-            src={comment.userImage}
-            alt={comment.userName}
-            width={50}
-            height={50}
-            className="h-12 w-12 rounded-full object-cover"
-          />
-
-          <div>
-            <h3 className="font-semibold text-black dark:text-white">
-              {comment.userName}
-            </h3>
-
-            <p className="mt-1 text-xs text-gray-500 dark:text-white/40">
-              {comment.time}
-            </p>
-          </div>
-
-        </div>
-
-        <div className="flex items-center gap-3">
-
-          <button className="text-sm font-medium text-violet-500 hover:underline">
-            Edit
-          </button>
-
-          <button className="text-sm font-medium text-red-500 hover:underline">
-            Delete
-          </button>
-
-        </div>
-
-      </div>
-
-      <p className="mt-4 text-sm leading-7 text-gray-700 dark:text-white/70">
-        {comment.text}
+      <p className="mt-2 text-sm text-gray-500 dark:text-white/50">
+        Be the first person to comment on this idea.
       </p>
 
     </div>
-  ))}
+  ) : (
+    comments.map((comment) => (
+      <div
+        key={comment._id}
+        className="rounded-2xl border border-gray-200 dark:border-white/10 bg-gray-100 dark:bg-[#0b1120] p-5"
+      >
+
+        <div className="flex items-start justify-between gap-4">
+
+          <div className="flex items-start gap-4">
+
+            <Image
+              src={comment?.creator?.image || "/user.png"}
+              alt={comment?.creator?.name || "user"}
+              width={50}
+              height={50}
+              className="h-12 w-12 rounded-full object-cover"
+            />
+
+            <div>
+              <h3 className="font-semibold text-black dark:text-white">
+                {comment?.creator?.name}
+              </h3>
+
+              <p className="mt-1 text-xs text-gray-500 dark:text-white/40">
+                {new Date(comment?.createdAt).toLocaleString()}
+              </p>
+            </div>
+
+          </div>
+
+          {user?.email===comment?.creator?.email ? (
+            <div className="flex items-center gap-3">
+
+            <button className="text-sm font-medium text-violet-500 hover:underline cursor-pointer">
+              Edit
+            </button>
+
+            <button className="text-sm font-medium text-red-500 hover:underline cursor-pointer">
+              Delete
+            </button>
+
+          </div>
+
+          ) :(<>
+          </>)}
+        </div>
+
+        <p className="mt-4 text-sm leading-7 text-gray-700 dark:text-white/70">
+          {comment?.comment}
+        </p>
+
+      </div>
+    ))
+  )}
 
 </div>
 
