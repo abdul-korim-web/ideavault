@@ -9,6 +9,20 @@ const fetchIdeas = async()=>{
 }
 export default async function IdeasPage() {
   const ideas = await fetchIdeas()
+  if (!ideas || ideas?.length===0) {
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-white dark:bg-[#0b1120]">
+      <div className="text-center">
+        <h1 className="text-2xl font-bold text-black dark:text-white">
+          Idea Not Found
+        </h1>
+        <p className="mt-2 text-sm text-gray-500">
+          The idea you are looking for does not exist.
+        </p>
+      </div>
+    </div>
+  );
+}
   return (
     <section className="min-h-screen bg-white dark:bg-[#0b1120] px-4 py-10 md:px-8">
       <div className="mx-auto max-w-7xl">

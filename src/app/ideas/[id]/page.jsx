@@ -1,28 +1,38 @@
-"use client";
 
+import { auth } from "@/lib/auth";
 import { Button } from "@heroui/react";
+import { headers } from "next/headers";
 import Image from "next/image";
-
-export default function IdeaDetailsPage() {
-  const idea = {
-    _id: "1",
-    title: "AI Resume Builder",
-    shortDescription:
-      "An AI-powered tool that creates professional resumes instantly based on user input.",
-    detailedDescription:
-      "This platform uses AI to generate optimized resumes tailored for job descriptions and improve hiring opportunities for job seekers.",
-    category: "AI",
-    tags: ["AI", "Career", "Resume"],
-    imageUrl:
-      "https://images.unsplash.com/photo-1523240795612-9a054b0db644",
-    estimatedBudget: "$2000",
-    targetAudience: "Job Seekers",
-    problemStatement:
-      "People struggle to create professional resumes that match modern hiring standards.",
-    proposedSolution:
-      "AI generates optimized resumes instantly using smart suggestions.",
-  };
-
+const fetchSingleIdeas = async(id,token)=>{
+  const res =await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/product/${id}`,{
+    headers:{
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    }
+  })
+  const data = await res.json()
+  return data?.data
+}
+export default async function IdeaDetailsPage({params}) {
+  const {token} = await auth.api.getToken({
+    headers:await headers()
+  })
+  const {id} = await params
+  const idea =  await fetchSingleIdeas(id,token)
+if (!idea) {
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-white dark:bg-[#0b1120]">
+      <div className="text-center">
+        <h1 className="text-2xl font-bold text-black dark:text-white">
+          Idea Not Found
+        </h1>
+        <p className="mt-2 text-sm text-gray-500">
+          The idea you are looking for does not exist.
+        </p>
+      </div>
+    </div>
+  );
+}
   const comments = [
   {
     _id: "1",
