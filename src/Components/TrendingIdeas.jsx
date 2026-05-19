@@ -1,8 +1,10 @@
 
 import Image from "next/image";
 import IdeaCard from "./IdeaCard";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 
-export default function TrendingIdeas() {
+export default async function TrendingIdeas() {
    const ideas = [
   {
     _id: "1",
@@ -100,6 +102,10 @@ export default function TrendingIdeas() {
     proposedSolution: "AI-based automated trip planning.",
   },
 ];
+const {token} = await auth.api.getToken({
+  headers:await headers()
+})
+console.log('token', token)
 
   return (
    <section className="bg-[#0b1120] px-4 py-16 md:px-8 text-white ">
