@@ -27,7 +27,7 @@ export const createProductAction = async (prevState, formData) => {
   };
 //   console.log('ideaData', ideaData)
 
-  const res = await fetch("http://localhost:5000/product", {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/product`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
