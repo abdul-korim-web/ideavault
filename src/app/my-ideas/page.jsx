@@ -1,10 +1,10 @@
 
+import DeleteProduct from "@/Components/client/deleteProduct";
 import { auth } from "@/lib/auth";
 import { Button } from "@heroui/react";
 import { headers } from "next/headers";
 import Image from "next/image";
 const fetchIdeas = async(token)=>{
-  console.log(process.env.NEXT_PUBLIC_SERVER_URL);
   const res =await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/product/mydata`,{
     headers:{
       "Content-Type": "application/json",
@@ -111,9 +111,7 @@ const {token} = await auth.api.getToken({
                       Update
                     </Button>
 
-                    <Button variant="outline" className="flex-1 rounded-xl border border-red-500 px-4 py-2 text-sm font-medium text-red-500 transition hover:bg-red-500 hover:text-white">
-                      Delete
-                    </Button>
+                    <DeleteProduct productId={idea?._id}/>
 
                   </div>
 
