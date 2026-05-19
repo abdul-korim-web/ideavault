@@ -1,5 +1,6 @@
 
 import DeleteProduct from "@/Components/client/deleteProduct";
+import { UpdateModal } from "@/Components/client/UpdateModal";
 import { auth } from "@/lib/auth";
 import { Button } from "@heroui/react";
 import { headers } from "next/headers";
@@ -107,9 +108,8 @@ const {token} = await auth.api.getToken({
 
                   <div className="mt-5 flex items-center gap-3">
 
-                    <Button variant="outline" className="flex-1 rounded-xl border border-violet-500 px-4 py-2 text-sm font-medium text-violet-500 transition hover:bg-violet-500 hover:text-white">
-                      Update
-                    </Button>
+                    
+                    <UpdateModal idea={idea}/>
 
                     <DeleteProduct productId={idea?._id}/>
 

@@ -18,7 +18,7 @@ export const createProductAction = async (prevState, formData) => {
     shortDescription: data.shortDescription,
     detailedDescription: data.detailedDescription,
     category: data.category,
-    tags: data.tags ? data.tags.split(" ").map((t) => t.trim()) : [],
+    tags: data.tags ? data.tags.split(",").map((t) => t.trim()) : [],
     imageUrl: data.imageUrl,
     estimatedBudget: data.estimatedBudget,
     targetAudience: data.targetAudience,
