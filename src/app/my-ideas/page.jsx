@@ -1,91 +1,38 @@
 
+import { auth } from "@/lib/auth";
 import { Button } from "@heroui/react";
+import { headers } from "next/headers";
 import Image from "next/image";
-
-export default function MyIdeasPage() {
-
-  const myIdeas = [
-    {
-      _id: "1",
-      title: "AI Resume Builder",
-      shortDescription:
-        "An AI tool that generates professional resumes instantly.",
-      detailedDescription:
-        "Uses AI to create optimized resumes based on job descriptions.",
-      category: "AI",
-      tags: ["AI", "Career", "Resume"],
-      imageUrl:
-        "https://images.unsplash.com/photo-1581091870622-2c7e0c1d3f2a",
-      estimatedBudget: "$2000",
-      targetAudience: "Job Seekers",
-      problemStatement:
-        "People struggle to create professional resumes.",
-      proposedSolution:
-        "AI generates optimized resumes instantly.",
-      createdAt: "2 days ago",
-    },
-
-    {
-      _id: "2",
-      title: "Health Tracker App",
-      shortDescription:
-        "Track health activities and fitness goals easily.",
-      detailedDescription:
-        "Users can monitor sleep, calories, workouts and get AI insights.",
-      category: "Health",
-      tags: ["Fitness", "Health", "Tracker"],
-      imageUrl:
-        "https://images.unsplash.com/photo-1556228578-0d85b1a4d571",
-      estimatedBudget: "$5000",
-      targetAudience: "Fitness Enthusiasts",
-      problemStatement:
-        "People fail to maintain healthy routines consistently.",
-      proposedSolution:
-        "An AI-driven app that tracks habits and motivates users daily.",
-      createdAt: "5 days ago",
-    },
-
-    {
-      _id: "3",
-      title: "AI Travel Planner",
-      shortDescription:
-        "AI generates personalized travel plans.",
-      detailedDescription:
-        "Creates travel itineraries based on budget and preferences.",
-      category: "Travel",
-      tags: ["AI", "Travel", "Planner"],
-      imageUrl:
-        "https://images.unsplash.com/photo-1501785888041-af3ef285b470",
-      estimatedBudget: "$6000",
-      targetAudience: "Travelers",
-      problemStatement:
-        "Trip planning takes too much time.",
-      proposedSolution:
-        "AI automatically builds travel plans.",
-      createdAt: "1 week ago",
-    },
-
-    {
-      _id: "4",
-      title: "Smart Grocery System",
-      shortDescription:
-        "AI-based grocery ordering system.",
-      detailedDescription:
-        "Suggests groceries based on user behavior and habits.",
-      category: "Tech",
-      tags: ["AI", "E-commerce", "Delivery"],
-      imageUrl:
-        "https://images.unsplash.com/photo-1580915411954-282cb1b0d780",
-      estimatedBudget: "$10000",
-      targetAudience: "Families",
-      problemStatement:
-        "Grocery shopping takes too much time.",
-      proposedSolution:
-        "Smart automated grocery system.",
-      createdAt: "3 days ago",
-    },
-  ];
-
+const fetchIdeas = async(token)=>{
+  console.log(process.env.NEXT_PUBLIC_SERVER_URL);
+  const res =await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/product/mydata`,{
+    headers:{
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    }
+  })
+  const data = await res.json()
+  return data?.data
+}
+export default async function MyIdeasPage() {
+const {token} = await auth.api.getToken({
+    headers:await headers()
+  })
+  const myIdeas = await fetchIdeas(token)
+  if (!myIdeas || myIdeas?.length===0) {
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-white dark:bg-[#0b1120]">
+      <div className="text-center">
+        <h1 className="text-2xl font-bold text-black dark:text-white">
+          Idea Not Found
+        </h1>
+        <p className="mt-2 text-sm text-gray-500">
+          The idea you are looking for does not exist.
+        </p>
+      </div>
+    </div>
+  );
+}
   return (
     <section className="min-h-screen bg-white dark:bg-[#0b1120] px-4 py-10 md:px-8">
       <div className="mx-auto max-w-7xl">
@@ -104,7 +51,7 @@ export default function MyIdeasPage() {
 
           <div className="rounded-2xl bg-violet-600 px-5 py-3 text-center text-white">
             <h3 className="text-2xl font-black">
-              {myIdeas.length}
+              {myIdeas?.length}
             </h3>
             <p className="text-xs text-white/80">Total Ideas</p>
           </div>
