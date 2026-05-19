@@ -1,5 +1,8 @@
 
+
+import CommentDelete from "@/Components/client/CommentDelete";
 import CommentFrom from "@/Components/client/CommentFrom";
+
 import { auth } from "@/lib/auth";
 import { authClient } from "@/lib/auth-client";
 import { Button } from "@heroui/react";
@@ -226,10 +229,8 @@ if (!idea) {
             <button className="text-sm font-medium text-violet-500 hover:underline cursor-pointer">
               Edit
             </button>
-
-            <button className="text-sm font-medium text-red-500 hover:underline cursor-pointer">
-              Delete
-            </button>
+<CommentDelete token={token} commentId={comment._id} />
+        
 
           </div>
 
