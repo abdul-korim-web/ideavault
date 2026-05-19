@@ -3,6 +3,7 @@ import { Button } from "@heroui/react";
 import Image from "next/image";
 
 export default function MyIdeasPage() {
+
   const myIdeas = [
     {
       _id: "1",
