@@ -6,9 +6,11 @@ import {Button, Modal} from "@heroui/react";
 import { authClient } from "@/lib/auth-client";
 import { toast } from "react-toastify";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+
 const ConfromDeleteModal = ({ productId }) => {
     const [pending,setPending]= useState(false)
-
+const router = useRouter();
   const handleDelete = async() => {
     try {
         setPending(true)
@@ -25,6 +27,8 @@ const ConfromDeleteModal = ({ productId }) => {
 
 if (res.success) {
   toast.success(res.message);
+  router.refresh();
+
 } else {
   toast.error(res.message);
 }

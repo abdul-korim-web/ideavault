@@ -4,7 +4,9 @@ import IdeaCard from "./IdeaCard";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 const fetchTrandingIdeas = async()=>{
-  const res =await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/product/topdata`)
+  const res =await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/product/topdata`,{
+   cache:"no-store"
+  })
   const data = await res.json()
   return data?.homeProduct
 }

@@ -9,7 +9,27 @@ import { authClient } from "@/lib/auth-client";
 import { Button } from "@heroui/react";
 import { headers } from "next/headers";
 import Image from "next/image";
+export async function generateMetadata({ params }) {
+  const { id } =await params;
+const {token} = await auth.api.getToken({
+    headers:await headers()
+  })
+  const res =await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/product/${id}`,{
+    headers:{
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    }
+  })
+  const data = await res.json()
+  const idea = data?.data
+
+  return {
+    title: idea?.title || "Tiles Details",
+    description: idea?.detailedDescription?.slice(0, 150) || "Tiles details page",
+  };
+}
 const fetchSingleIdeas = async(id,token)=>{
+  
   const res =await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/product/${id}`,{
     headers:{
       "Content-Type": "application/json",

@@ -6,6 +6,10 @@ import { Button } from "@heroui/react";
 import { headers } from "next/headers";
 import Image from "next/image";
 import Link from "next/link";
+export const metadata = {
+  title: 'My Interactions ',
+  description: 'This is a My Interactions page ',
+}
  const getComments = async (token) => {
   try {
     const res = await fetch(

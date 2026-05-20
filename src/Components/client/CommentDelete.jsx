@@ -1,7 +1,8 @@
 "use client";
 
 import { Button } from "@heroui/react";
-import React, { useState } from "react";
+import { useRouter } from "next/navigation";
+import React, {  useState } from "react";
 import { toast } from "react-toastify";
 
 
@@ -9,6 +10,7 @@ const CommentDelete = ({ token, commentId }) => {
   const [loading, setLoading] = useState(false);
 
 
+  const router = useRouter()
   const handleDelete = async () => {
     try {
       setLoading(true);
@@ -28,6 +30,7 @@ const CommentDelete = ({ token, commentId }) => {
 
       if (data.success) {
         toast.success(data.message || "Comment deleted");
+        router.refresh()
     
       } else {
         toast.error(data.message || "Delete failed");

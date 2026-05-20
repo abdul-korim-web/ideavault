@@ -6,8 +6,13 @@ import { auth } from "@/lib/auth";
 import { Button } from "@heroui/react";
 import { headers } from "next/headers";
 import Image from "next/image";
+export const metadata = {
+  title: 'My Ideas ',
+  description: 'This is a my ideas page ',
+}
 const fetchIdeas = async(token)=>{
   const res =await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/product/mydata`,{
+    cache:"no-store",
     headers:{
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,

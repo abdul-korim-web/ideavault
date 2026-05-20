@@ -1,11 +1,13 @@
 "use client"
 import { authClient } from "@/lib/auth-client";
 import { Button } from "@heroui/react";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 
 const CommentFrom = ({productId}) => {
     const [loading,setLoading] = useState(false)
+    const router = useRouter()
     const handelCommentSubmit = async (e) => {
   e.preventDefault();
 
@@ -42,6 +44,7 @@ const CommentFrom = ({productId}) => {
     if (data.success) {
       toast.success(data.message || "Comment added");
       form.reset();
+      router.refresh()
 
 
     } else {

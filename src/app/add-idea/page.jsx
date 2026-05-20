@@ -1,7 +1,10 @@
 
 import { createProductAction } from "@/action/createProduct";
 import CreateProductFrom from "@/Components/client/CreateProductFrom";
-
+export const metadata = {
+  title: 'Add Ideas ',
+  description: 'This is a add ideas page ',
+}
 export default function AddIdeaPage() {
   return (
     <section className="min-h-screen bg-white dark:bg-[#0b1120] px-4 py-10 md:px-8">

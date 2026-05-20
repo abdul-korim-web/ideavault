@@ -1,6 +1,7 @@
 "use server";
 
 import { auth } from "@/lib/auth";
+import {  revalidateTag } from "next/cache";
 import { headers } from "next/headers";
 
 export const createProductAction = async (prevState, formData) => {
@@ -37,7 +38,7 @@ export const createProductAction = async (prevState, formData) => {
   });
 
   const result = await res.json();
-console.log('result', result)
+  revalidateTag("products")
   return result;
  } catch (error) {
     console.error("Create Product Error:", error);

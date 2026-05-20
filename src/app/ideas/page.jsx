@@ -2,8 +2,14 @@
 
 import IdeaCard from "@/Components/IdeaCard";
 import Image from "next/image";
+export const metadata = {
+  title: 'Ideas ',
+  description: 'This is a ideas page ',
+}
 const fetchIdeas = async()=>{
-  const res =await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/product`)
+  const res =await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/product`,{
+    cache:"no-store"
+  })
   const data = await res.json()
   return data?.allProduct
 }
