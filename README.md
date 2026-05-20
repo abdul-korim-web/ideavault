@@ -5,7 +5,7 @@
 ![Status](https://img.shields.io/badge/Project-Completed-success)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
-🔗 Live Site: https://ideavault.vercel.app  
+🔗 Live Site: https://abdul-ideavault.vercel.app  
 🔗 GitHub Repo: https://github.com/abdul-korim-web/ideavault
 
 ---
