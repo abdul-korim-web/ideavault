@@ -8,7 +8,7 @@ const CreateProductFromButton = () => {
         <button
   type="submit"
   disabled={pending}
-  className="group relative w-full overflow-hidden rounded-2xl bg-violet-600 py-4 text-sm font-semibold text-white transition-all duration-300 hover:bg-violet-500 disabled:cursor-not-allowed disabled:opacity-70"
+  className="group relative w-full overflow-hidden rounded-2xl bg-violet-600 py-4 text-sm font-semibold text-white transition-all duration-300 hover:bg-violet-500 disabled:cursor-not-allowed disabled:opacity-70 cursor-pointer"
 >
   <span className="relative z-10 flex items-center justify-center gap-2">
     {pending && (

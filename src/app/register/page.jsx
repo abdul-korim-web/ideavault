@@ -3,11 +3,12 @@
 import { authClient } from "@/lib/auth-client";
 import { Button } from "@heroui/react";
 import Link from "next/link";
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import { FcGoogle } from "react-icons/fc";
 import { toast } from "react-toastify";
 
 export default function RegisterPage() {
+  const router = useRouter()
   const handleRegistration =async (e)=>{
     e.preventDefault()
    const userFormData = new FormData(e.currentTarget);
@@ -17,7 +18,7 @@ export default function RegisterPage() {
   toast.error(error?.message ||  "Register failed");
   return;
 }
-
+router.refresh()
 toast.success("User created successfully:");
 redirect(`/`)
     

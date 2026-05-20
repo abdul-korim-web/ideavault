@@ -1,0 +1,14 @@
+import React from 'react';
+export const metadata = {
+  title: 'Register ',
+  description: 'This is a register  page ',
+}
+const Layout = ({children}) => {
+    return (
+        <div>
+            {children}
+        </div>
+    );
+}
+
+export default Layout;
