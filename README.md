@@ -1,36 +1,173 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 💡 IdeaVault – Startup Idea Sharing Platform
 
-## Getting Started
+![Next.js](https://img.shields.io/badge/Next.js-14-black?logo=nextdotjs)
+![Tailwind](https://img.shields.io/badge/TailwindCSS-3.0-38B2AC?logo=tailwindcss)
+![Status](https://img.shields.io/badge/Project-Completed-success)
+![License](https://img.shields.io/badge/License-MIT-green)
 
-First, run the development server:
+🔗 Live Site: https://ideavault.vercel.app  
+🔗 GitHub Repo: https://github.com/abdul-korim-web/ideavault
+
+---
+
+## 📌 Project Overview
+
+**IdeaVault** is a modern startup idea sharing platform built with **Next.js (App Router)**.
+
+Users can:
+- 💡 Share startup ideas
+- 🔍 Explore trending ideas
+- 💬 Comment on ideas
+- 🧾 Manage personal ideas
+- 👤 View interactions & comments
+- 🔐 Secure authentication system
+
+---
+
+## ✨ Features
+
+- 💡 Create & manage startup ideas
+- 📄 Dynamic idea details page
+- 💬 Comment system (CRUD support)
+- 🔐 Authentication (login/register/logout)
+- 👤 User profile integration
+- 🚀 Trending ideas section
+- 🧠 Server Actions + API integration
+- ⚡ Optimized caching (revalidateTag)
+- 📱 Fully responsive UI (mobile + desktop)
+- 🎨 Dark / Light mode support
+- 🧭 Active route navigation
+
+---
+
+## 🛠️ Technologies Used
+
+![Next.js](https://img.shields.io/badge/Next.js-14-black?logo=nextdotjs)
+![React](https://img.shields.io/badge/React-18-blue?logo=react)
+![Tailwind](https://img.shields.io/badge/TailwindCSS-3.0-38B2AC?logo=tailwindcss)
+![HeroUI](https://img.shields.io/badge/HeroUI-Component%20Library-purple)
+![MongoDB](https://img.shields.io/badge/MongoDB-Database-green?logo=mongodb)
+![Better Auth](https://img.shields.io/badge/BetterAuth-Authentication-orange)
+
+---
+
+## 🚀 How to Run This Project
 
 ```bash
+# Clone repository
+git clone https://github.com/abdul-korim-web/ideavault
+
+# Go to project folder
+cd ideavault
+
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+## Open in browser:
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+http://localhost:3000
+```
+## 📂 Project Structure
+```
+src/
+│
+├── action/
+│   ├── createProduct.js
+│   ├── deleteProductAction.js
+│
+├── app/
+│   ├── layout.js
+│   ├── page.js
+│   ├── loading.jsx
+│   ├── not-found.jsx
+│   │
+│   ├── add-idea/
+│   ├── ideas/
+│   │    └── [id]/
+│   ├── interactions/
+│   ├── my-ideas/
+│   ├── login/
+│   ├── register/
+│   ├── api/auth/[...all]/
+│
+├── Components/
+│   ├── Footer.jsx
+│   ├── Navbar.jsx
+│   ├── IdeaCard.jsx
+│   ├── TrendingIdeas.jsx
+│   ├── HomeBannerSlider.jsx
+│   ├── HowItWorks.jsx
+│   ├── WhyIdeaVault.jsx
+│   │
+│   └── client/
+│       ├── CommentFrom.jsx
+│       ├── CommentDelete.jsx
+│       ├── CreateProductFrom.jsx
+│       ├── UpdateModal.jsx
+│       ├── UpdateComment.jsx
+│       ├── deleteProduct.jsx
+│
+├── lib/
+│   ├── auth.js
+│   ├── auth-client.js
+│
+├── images/
+│   ├── banner-image1.png
+│   ├── banner-image2.png
+│   ├── banner-image3.png
+│
+└── proxy.js
+ ```
+  ## ⚡ Performance Features
+  
+ - 🚀 Server Components (App Router)
+- 🧠 Server Actions for mutations
+- 🔄 Smart caching with revalidateTag
+- 🖼️ Next/Image optimization
+- ⚡ Fast navigation system
+- 📦 Minimal client-side JS usage
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+  ## 🔐 Authentication System
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- 🔑 Google login support
+- 🛡️ Secure session handling
+- 🚫 Protected routes (middleware ready)
+- 👤 User-based ownership system
+- 🧑‍💼 Profile integration
+## 💬 Comment System
 
-## Learn More
+- ✍️ Create comments on ideas
+- ✏️ Edit own comments
+- 🗑️ Delete own comments
+- 🖼️ User avatar + timestamp
+- 📭 Empty state handling
+## 🎨 UI/UX Highlights
 
-To learn more about Next.js, take a look at the following resources:
+- 🌙 Dark / Light mode support
+- 🎯 Clean SaaS-style UI design
+- 📱 Fully responsive mobile-first layout
+- 🧭 Active route navigation highlighting
+- ✨ Smooth hover & transition animations
+- 🧩 Modular and reusable component structure
+## 📜 License & Copyright
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This project is **open-source and free to use** under the **MIT License**.  
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+You can freely:
+- ✅ View, modify, and use the source code  
+- ✅ Distribute or include it in your own projects  
+- ✅ Use it for personal or commercial purposes  
 
-## Deploy on Vercel
+Just make sure to keep the original author credit:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**© 2026 Abdul Korim**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## For collaboration or inquiries, contact:  
+📧 Email: abdulkorimwebdeveloper@gmail.com <br> 
+👉 GitHub: [abdul-korim-web](https://github.com/abdul-korim-web) <br>
+👉 Facebook: [abdul-korim-web](https://www.facebook.com/abdulkorimweb) <br>
+👉 LinkedIn: [abdul-korim-web](https://linkedin.com/in/abdul-korim-webdeveloper) <br>
