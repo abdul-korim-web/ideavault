@@ -1,5 +1,6 @@
 
 import DeleteProduct from "@/Components/client/deleteProduct";
+import { UpdateComment } from "@/Components/client/UpdateComment";
 import { UpdateModal } from "@/Components/client/UpdateModal";
 import { auth } from "@/lib/auth";
 import { Button } from "@heroui/react";
@@ -110,6 +111,7 @@ const {token} = await auth.api.getToken({
 
                     
                     <UpdateModal idea={idea}/>
+                   
 
                     <DeleteProduct productId={idea?._id}/>
 

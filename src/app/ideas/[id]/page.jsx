@@ -2,6 +2,7 @@
 
 import CommentDelete from "@/Components/client/CommentDelete";
 import CommentFrom from "@/Components/client/CommentFrom";
+import { UpdateComment } from "@/Components/client/UpdateComment";
 
 import { auth } from "@/lib/auth";
 import { authClient } from "@/lib/auth-client";
@@ -226,9 +227,8 @@ if (!idea) {
           {user?.email===comment?.creator?.email ? (
             <div className="flex items-center gap-3">
 
-            <button className="text-sm font-medium text-violet-500 hover:underline cursor-pointer">
-              Edit
-            </button>
+<UpdateComment oldComment={comment?.comment} token={token} commentId={comment._id} />
+      
 <CommentDelete token={token} commentId={comment._id} />
         
 
