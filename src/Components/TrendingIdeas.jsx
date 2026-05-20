@@ -19,16 +19,16 @@ export default async function TrendingIdeas() {
       <div className="mx-auto max-w-7xl">
 
         <div className="mb-10">
-          <h2 className="text-2xl font-black md:text-4xl">
+          <h2 className="text-2xl font-black md:text-4xl animate__animated animate__backInDown">
             Trending Ideas 🚀
           </h2>
-          <p className="mt-2 text-sm text-gray-600 dark:text-white/60">
+          <p className="mt-2 text-sm text-gray-600 dark:text-white/60 animate__animated animate__backInLeft">
             Explore the most popular startup ideas from the community
           </p>
         </div>
 
         {!ideas || ideas.length === 0 ? (
-          <div className="flex flex-col items-center justify-center rounded-2xl border border-gray-200 dark:border-white/10 bg-gray-100 dark:bg-white/5 py-20 text-center">
+          <div className="flex flex-col items-center justify-center rounded-2xl border border-gray-200 dark:border-white/10 bg-gray-100 dark:bg-white/5 py-20 text-center animate__animated animate__backInUp">
             <h3 className="text-xl font-bold text-black dark:text-white">
               No Ideas Found 😕
             </h3>
@@ -37,7 +37,7 @@ export default async function TrendingIdeas() {
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 animate__animated animate__backInUp">
             {ideas.slice(0, 6).map((idea) => (
               <IdeaCard key={idea._id} idea={idea} />
             ))}

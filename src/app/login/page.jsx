@@ -23,7 +23,7 @@ export default function LoginPage() {
       
     }
   return (
-    <section className="min-h-screen bg-white dark:bg-[#0b1120] flex items-center justify-center px-4">
+    <section className="min-h-screen bg-white dark:bg-[#0b1120] flex items-center justify-center px-4 animate__animated animate__backInDown">
       <div className="w-full max-w-md rounded-2xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 p-8">
 
         <h1 className="text-2xl font-black text-black dark:text-white text-center">

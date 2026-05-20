@@ -46,17 +46,17 @@ export default async function MyInteractionsPage({  }) {
         <div className="mb-10 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
 
           <div>
-            <h1 className="text-3xl font-black text-black dark:text-white">
+            <h1 className="text-3xl font-black text-black dark:text-white animate__animated animate__backInLeft">
               My Interactions 💬
             </h1>
 
-            <p className="mt-2 text-sm text-gray-600 dark:text-white/60">
+            <p className="mt-2 text-sm text-gray-600 dark:text-white/60 animate__animated animate__backInRight">
               All comments you have made on startup ideas
             </p>
           </div>
 
           <div className="rounded-2xl bg-violet-600 px-5 py-3 text-center text-white">
-            <h3 className="text-2xl font-black">
+            <h3 className="text-2xl font-black animate__animated animate__flash">
               {comments.length}
             </h3>
             <p className="text-xs text-white/80">Total Comments</p>
@@ -80,7 +80,7 @@ export default async function MyInteractionsPage({  }) {
         ) : (
 
           /* LIST */
-          <div className="space-y-6">
+          <div className="space-y-6 animate__animated animate__backInUp">
 
             {comments.map((item) => (
 

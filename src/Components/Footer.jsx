@@ -5,14 +5,14 @@ export default function IdeaVaultFooter() {
     <footer className="border-t border-gray-200 dark:border-white/10 bg-white dark:bg-[#0b1120] text-black dark:text-white">
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 py-10 md:grid-cols-3 md:px-8">
 
-        <div>
+        <div className="animate__animated animate__backInLeft">
           <h2 className="text-xl font-black">IdeaVault</h2>
           <p className="mt-2 text-sm text-gray-600 dark:text-white/60">
             A platform for sharing, exploring and validating startup ideas.
           </p>
         </div>
 
-        <div>
+        <div className="animate__animated animate__backInUp">
           <h3 className="text-sm font-semibold">Platform</h3>
           <ul className="mt-3 space-y-2 text-sm text-gray-600 dark:text-white/60">
             <li><Link href="/ideas" className="hover:text-black dark:hover:text-white">Ideas</Link></li>
@@ -22,7 +22,7 @@ export default function IdeaVaultFooter() {
           </ul>
         </div>
 
-        <div>
+        <div className="animate__animated animate__backInRight">
           <h3 className="text-sm font-semibold">Contact</h3>
           <p className="mt-3 text-sm text-gray-600 dark:text-white/60">
             Email: abdulkorimwebdeveloper@gmail.com

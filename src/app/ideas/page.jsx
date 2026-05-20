@@ -18,7 +18,7 @@ export default async function IdeasPage() {
   if (!ideas || ideas?.length===0) {
   return (
     <div className="flex min-h-screen items-center justify-center bg-white dark:bg-[#0b1120]">
-      <div className="text-center">
+      <div className="text-center animate__animated animate__backInLeft">
         <h1 className="text-2xl font-bold text-black dark:text-white">
           Idea Not Found
         </h1>
@@ -34,11 +34,11 @@ export default async function IdeasPage() {
       <div className="mx-auto max-w-7xl">
 
         <div className="mb-10">
-          <h1 className="text-3xl font-black text-black dark:text-white">
+          <h1 className="text-3xl font-black text-black dark:text-white animate__animated animate__backInLeft">
             Explore Startup Ideas 🚀
           </h1>
 
-          <p className="mt-2 text-sm text-gray-600 dark:text-white/60">
+          <p className="mt-2 text-sm text-gray-600 dark:text-white/60 animate__animated animate__backInRight">
             Discover innovative ideas shared by creators
           </p>
         </div>
@@ -54,7 +54,7 @@ export default async function IdeasPage() {
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 animate__animated animate__backInUp">
 
             {ideas.map((idea) => (
               <IdeaCard  key={idea._id} idea={idea}/>

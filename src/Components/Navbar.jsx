@@ -53,7 +53,7 @@ const router = useRouter()
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 md:px-8">
 
   
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 animate__animated animate__backInLeft">
           <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-500 to-cyan-500 text-white">
             💡
           </div>
@@ -66,7 +66,7 @@ const router = useRouter()
             const active = isActive(item.href);
 
             return (
-              <li key={item.href}>
+              <li key={item.href} className="animate__animated animate__backInDown">
                 <Link
                   href={item.href}
                   className={`rounded-full px-4 py-2 text-sm font-medium transition
@@ -85,7 +85,7 @@ const router = useRouter()
         </ul>
 
  
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 animate__animated animate__backInRight">
 
           <button
             onClick={toggleTheme}

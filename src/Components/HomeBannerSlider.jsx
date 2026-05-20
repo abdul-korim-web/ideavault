@@ -44,7 +44,7 @@ export default function HomeBannerSlider() {
 
   return (
     <section className="bg-[#0b1120] px-4 py-16 md:px-8">
-      <div className="">
+      <div className="animate__animated animate__backInRight">
         <Slider {...settings}>
           {slides.map((item, index) => (
             <div key={index}>
@@ -59,15 +59,15 @@ export default function HomeBannerSlider() {
                 <div className="absolute inset-0 bg-black/60"></div>
 
                 <div className="relative z-10 max-w-2xl  bottom-[-150]">
-                  <h1 className="text-3xl font-black leading-tight md:text-5xl">
+                  <h1 className="text-3xl font-black leading-tight md:text-5xl  animate__animated animate__backInDown ">
                     {item.title}
                   </h1>
 
-                  <p className="mt-5 text-sm text-white/80 md:text-base">
+                  <p className="mt-5 text-sm text-white/80 md:text-base animate__animated animate__backInLeft">
                     {item.desc}
                   </p>
 
-                  <button className="mt-6 rounded-full bg-violet-600 px-6 py-3 text-sm font-semibold text-white hover:bg-violet-500 transition">
+                  <button className="mt-6 rounded-full bg-violet-600 px-6 py-3 text-sm font-semibold text-white hover:bg-violet-500 transition animate__animated animate__backInUp">
                     {item.cta}
                   </button>
                 </div>

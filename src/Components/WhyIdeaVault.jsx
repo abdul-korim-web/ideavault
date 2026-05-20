@@ -22,15 +22,15 @@ export default function WhyIdeaVault() {
     <section className="bg-gray-50 dark:bg-[#0b1120] px-4 py-16 md:px-8">
       <div className="mx-auto max-w-7xl">
 
-        <h2 className="text-2xl font-black md:text-4xl text-black dark:text-white">
+        <h2 className="text-2xl font-black md:text-4xl text-black dark:text-white animate__animated animate__backInLeft">
           Why IdeaVault? 🚀
         </h2>
 
-        <p className="mt-2 text-sm text-gray-600 dark:text-white/60">
+        <p className="mt-2 text-sm text-gray-600 dark:text-white/60 animate__animated animate__backInRight">
           A platform built for innovators and creators
         </p>
 
-        <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 animate__animated animate__backInRight">
 
           {features.map((item, i) => (
             <div

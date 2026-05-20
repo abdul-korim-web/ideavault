@@ -47,17 +47,17 @@ const {token} = await auth.api.getToken({
         <div className="mb-10 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
 
           <div>
-            <h1 className="text-3xl font-black text-black dark:text-white">
+            <h1 className="text-3xl font-black text-black dark:text-white animate__animated animate__backInLeft">
               My Ideas 💡
             </h1>
 
-            <p className="mt-2 text-sm text-gray-600 dark:text-white/60">
+            <p className="mt-2 text-sm text-gray-600 dark:text-white/60 animate__animated animate__backInRight">
               Manage all your startup ideas
             </p>
           </div>
 
           <div className="rounded-2xl bg-violet-600 px-5 py-3 text-center text-white">
-            <h3 className="text-2xl font-black">
+            <h3 className="text-2xl font-black animate__animated animate__flash">
               {myIdeas?.length}
             </h3>
             <p className="text-xs text-white/80">Total Ideas</p>
@@ -70,12 +70,12 @@ const {token} = await auth.api.getToken({
             <h2 className="text-2xl font-bold text-black dark:text-white">
               No Ideas Found 😕
             </h2>
-            <p className="mt-2 text-sm text-gray-600 dark:text-white/60">
+            <p className="mt-2 text-sm text-gray-600 dark:text-white/60 animate__animated animate__backInRight">
               Start by creating your first idea.
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 animate__animated animate__backInUp">
 
             {myIdeas.map((idea) => (
               <div
